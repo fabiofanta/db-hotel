@@ -23,7 +23,7 @@ SELECT * FROM `pagamenti` WHERE `status` = 'accepted' ORDER BY `price` DESC LIMI
 
 // 7
 
-SELECT * FROM `ospiti` WHERE `document_type` = 'driver license' AND `date_of_birth` BETWEEN '1975-01-01' AND '1975-12-31';
+SELECT * FROM `ospiti` WHERE `document_type` = 'driver license' AND `date_of_birth` LIKE '1975-%-%';
 
 // 8
 
