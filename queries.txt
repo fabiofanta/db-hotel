@@ -27,4 +27,4 @@ SELECT * FROM `ospiti` WHERE `document_type` = 'driver license' AND `date_of_bir
 
 // 8
 
-SELECT SUM(beds) FROM `stanze`;
+SELECT SUM(beds) as 'Posti letto totali Hotel' FROM `stanze`;
