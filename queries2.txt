@@ -17,3 +17,17 @@ SELECT COUNT(id) as `Prenotazioni`, HOUR(`created_at`) as `Orari Prenotazioni` F
 // 5
 
 SELECT COUNT(id) as `Numero Prenotazioni`, `ospite_id` FROM `prenotazioni_has_ospiti` GROUP BY `ospite_id` ORDER BY COUNT(id) DESC LIMIT 1
+
+// 6
+
+SELECT COUNT(`prenotazioni_has_ospiti`.`id`) as `Prenotazioni`,`ospite_id`,`ospiti`.`name`,`ospiti`.`lastname` FROM `prenotazioni_has_ospiti`
+INNER JOIN `ospiti`
+on `ospiti`.`id` = `prenotazioni_has_ospiti`.`ospite_id`
+GROUP BY `prenotazioni_has_ospiti`.`ospite_id`
+HAVING COUNT(`prenotazioni_has_ospiti`.`id`)> 2
+
+// 7
+
+SELECT `prenotazioni_has_ospiti`.`prenotazione_id`, `ospiti`.`name`,`ospiti`.`lastname` FROM `prenotazioni_has_ospiti` INNER JOIN `ospiti` ON `ospiti`.`id` = `prenotazioni_has_ospiti`.`ospite_id`
+
+// 8
