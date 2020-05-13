@@ -31,3 +31,14 @@ HAVING COUNT(`prenotazioni_has_ospiti`.`id`)> 2
 SELECT `prenotazioni_has_ospiti`.`prenotazione_id`, `ospiti`.`name`,`ospiti`.`lastname` FROM `prenotazioni_has_ospiti` INNER JOIN `ospiti` ON `ospiti`.`id` = `prenotazioni_has_ospiti`.`ospite_id`
 
 // 8
+
+SELECT `prenotazioni_has_ospiti`.`prenotazione_id`, `ospiti`.`name`,`ospiti`.`lastname`,`pagamenti`.`price`,`paganti`.`name`,`paganti`.`lastname`,`prenotazioni`.`created_at` FROM `prenotazioni_has_ospiti`
+INNER JOIN `ospiti`
+ON `ospiti`.`id`= `prenotazioni_has_ospiti`.`ospite_id`
+INNER JOIN `pagamenti`
+ON `pagamenti`.`prenotazione_id`= `prenotazioni_has_ospiti`.`prenotazione_id`
+INNER JOIN `paganti`
+ON `paganti`.`ospite_id` = `prenotazioni_has_ospiti`.`ospite_id`
+INNER JOIN `prenotazioni`
+ON `prenotazioni`.`id` = `prenotazioni_has_ospiti`.`prenotazione_id`
+WHERE DATE_FORMAT(`prenotazioni`.`created_at`,'%Y-%m') = '2018-05'
