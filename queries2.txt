@@ -42,3 +42,15 @@ ON `paganti`.`ospite_id` = `prenotazioni_has_ospiti`.`ospite_id`
 INNER JOIN `prenotazioni`
 ON `prenotazioni`.`id` = `prenotazioni_has_ospiti`.`prenotazione_id`
 WHERE DATE_FORMAT(`prenotazioni`.`created_at`,'%Y-%m') = '2018-05'
+
+// 9
+
+SELECT SUM(`pagamenti`.`price`) as `Totale prezzi 1 Piano` FROM `prenotazioni` INNER JOIN `pagamenti` ON `pagamenti`.`prenotazione_id`= `prenotazioni`.`id` INNER JOIN `stanze` ON `stanze`.`id` = `prenotazioni`.`stanza_id` WHERE `stanze`.`floor` = '1'
+
+// 10
+
+SELECT `paganti`.`name`,`paganti`.`lastname`,`paganti`.`address`,`pagamenti`.`price` FROM `pagamenti` INNER JOIN `paganti` ON `paganti`.`id` = `pagamenti`.`pagante_id` WHERE `prenotazione_id`= '7'
+
+// 11
+
+SELECT `stanze`.`room_number`, `prenotazioni`.`id` as `ID Prenotazione` FROM `stanze` LEFT JOIN `prenotazioni` ON `stanze`.`id` = `prenotazioni`.`stanza_id` WHERE `prenotazioni`.`id` IS NULL
